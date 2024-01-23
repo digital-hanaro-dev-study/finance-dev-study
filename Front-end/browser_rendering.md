@@ -4,7 +4,8 @@
 
 ### 브라우저 랜더링 메커니즘
 
-브라우저는 서버로부터 바이트 형태의 HTML, JS, CSS 데이터를 받고 역직렬화를 통해 각 파일들을 복원한다. 그후, 아래의 랜더링 메커니즘을 통해 화면을 사용자에게 보여준다.
+브라우저는 서버로부터 바이트 형태의 HTML, JS, CSS 데이터를 받고 역직렬화를 통해 각 파일들을 복원한다.
+그후, 아래의 랜더링 메커니즘을 통해 화면을 사용자에게 보여준다.
 
 >
 
@@ -15,6 +16,10 @@
 5. Paint
 
 ![](https://velog.velcdn.com/images/duddn2012/post/faad2ae9-a22b-49a5-bba1-4fa7aa216459/image.png)
+랜더링 엔진의 종류로는 Gecko, WebKit, Blink 등이 있으며 Chrome은 현재 Blink 랜더링 엔진을 사용 중이다.
+
+![](https://velog.velcdn.com/images/duddn2012/post/e9044481-5901-4f71-bc0e-ecb1b4461c3f/image.png)
+공부하다보니 랜더링 성능은 어떻게 체크할 수 있을지 궁금하여 찾아보았는데 크롬 브라우저의 개발자 모드에서 Rendering 관련 상태를 확인하는 기능을 제공하는데 선의 색에 따라 어떤 작업을 진행하였는지 표현해준다. 랜더링 관련 문제가 발생할 때 유용할 것 같다. 색상 구분과 관련해서는 [debug_colors.cc](https://source.chromium.org/chromium/chromium/src/+/main:cc/debug/debug_colors.cc) 에 정리되어 있다.
 
 #### HTML Parse
 
@@ -34,7 +39,7 @@ HTML과 유사한 방식으로 Parsing이 진행되며 CSSOM tree를 생성한�
 
 #### JavaScript Parse And Execute
 
-브라우저 별로 JavaScript Engine 구현체가 다르다. V8(Chrome 브라우저를 위한 엔진), SpiderMonkey와 같은 JavaScript Engine에서 JavaScript 코드를 컴파일(AST) 및 인터프리팅(엔진 별로 과정은 조금씩 다름)을 하여 메인 쓰레드에서 실행되는 바이트 코드가 생성된다.
+랜더링 엔진과 분리되어 있으며 브라우저 별로 JavaScript Engine 구현체가 다르다. V8(Chrome 브라우저를 위한 엔진), SpiderMonkey와 같은 JavaScript Engine에서 JavaScript 코드를 컴파일(AST) 및 인터프리팅(엔진 별로 과정은 조금씩 다름)을 하여 메인 쓰레드에서 실행되는 바이트 코드가 생성된다.
 
 #### Style
 
