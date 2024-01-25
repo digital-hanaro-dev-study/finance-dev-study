@@ -22,3 +22,25 @@ var copyObject = function (target) {
 ```
 
 그러나 위 코드는 여러가지 문제점이 있다.
+객체의 프로퍼티에 객체를 관리하고 있는 경우를 생각해보자. 해당 객체를 위의 방법으로 복제된 객체 copyObject.property.data를 수정할 경우 원본 객체가 수정된다.
+
+```
+copyObject.property.data = changedData;
+console.log(originalObject.property.data === copyObject.property.data);  //true
+```
+
+이를 해결하는 방법은 재귀적으로 객체 내부의 프로퍼티들을 모두 복제하여 할당해주면 해결된다.
+
+```
+var copyObject = function (target) {
+  var result = {};
+  if (typeof tartget === "object" && target !== null) {
+    for (var prop in target) {
+      result[prop] = copyObject(target[prop]);
+    }
+  } else {
+    return target;
+  }
+  return result;
+};
+```
