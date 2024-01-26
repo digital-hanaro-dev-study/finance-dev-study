@@ -6,9 +6,12 @@ public class ApiClass {
 
         DbClass dbClass = gameClass.start();
 
+        Logger.getGlobal().info(dbClass.result());
+
         while (true){
             Thread.sleep(1000);
             dbClass = gameClass.process(dbClass);
+            Logger.getGlobal().info("\n" + dbClass.result());
         }
     }
 }
