@@ -44,3 +44,5 @@ var copyObject = function (target) {
   return result;
 };
 ```
+
+이로서 불변 객체를 만드는데 성공했다. 하지만 이것만으로 완벽하게 모든 정보를 복사한 것은 아니니 ES6에서 등장한 getOwnsProperty와 같은 함수를 활용해보자.
