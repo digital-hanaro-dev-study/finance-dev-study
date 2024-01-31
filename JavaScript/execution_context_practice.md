@@ -1,5 +1,5 @@
 ---
-title: "자바스크립트 프로토타입 (2024.01.28)"
+title: "실행 컨텍스트 실습 (2024.01.28)"
 
 tags:
     - Digital Hanaro Study
