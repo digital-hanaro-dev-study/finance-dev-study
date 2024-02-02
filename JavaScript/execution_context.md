@@ -24,20 +24,11 @@ LexicalEnvironment는 실행환경에서 실질적인 정보를 관리하는 env
 또한, 호이스팅을 알고있다면 함수 선언문 보다 함수 표현식이 더 안전한 코드임을 알 수 있다.
 이유는 선언문으로 정의된 동일한 명의 함수는 이후에 작성된 내용으로 덮어씌어지기 때문에 의도하지 않은 동작을 유발할 수 있기 때문이다.
 environmnetRecord는 Declarative Record와 Object Record 영역이 있는데 블록스코프에서 생성된 Lexical Environment는 블록스코프인 let과 const만 저장되므로 Declarative Record만 참조한다.
+
 **2.outerEnvironmentReference**
 outerEnvironmentReference는 해당 함수가 실행된 시점의 LexicalEnvironment를 참조한다. 그러므로 만약 함수 속의 함수에서 전역 변수에 접근하기 위해서는 두번의 outerEnvironmentReference 접근을 통해 접근할 수 있다.
 
-### strict mode
+### 결론
 
-'use strict'
-오해의 소지가 있는 구문을 문법적으로 명확하게 평가하겠다.
-호이스팅은 동일하나, 블럭 내 함수는 블럭 스코프를 갖는다.
-
-스트릭트 모드에서 블록 속의 함수는 자동으로 const로 선언된다.
-그러므로 블록 속에서는 let과 const를 사용하여 예상치 못한 동작을 예방하자.
-
-### 클로저(Closure)
-
-함수형 언어의 꽃
-상위 스코프의 식별자를 참조하는 스코프가 외부에서 지속적으로 참조되어 상위 스코프 보다 더 오래 살아있는것
-참조 당하는 EnvRec는 참조하는 EnvRec가 살아있는 한 죽을 수 없는 것.
+이로서 자바스크립트의 실행 컨텍스트가 런타임 환경에서 어떻게 구성되는지 알아보았다.
+앞으로 해당 개념을 숙지한 상태로 클로져, this와 같은 개념들을 공부해나가보자.
